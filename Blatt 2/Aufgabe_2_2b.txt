@@ -1,0 +1,13 @@
++-----------------+-----+-----+
+| Punkte (x, y)   | m   | b   |
++-----------------+-----+-----+
+| (7, 8),(−3, −2) | 1   | 1   |
++-----------------+-----+-----+
+| (4, 7),(1, −2)  | 3   | -5  |
++-----------------+-----+-----+
+| (2, 5),(−5, 5)  | 0   | 5   |
++-----------------+-----+-----+
+| (3, 2),(3, −1)  | inf | inf |
++-----------------+-----+-----+
+
+Die Gerade durch die Punkte (3, 2),(3, −1) lässt sich nicht durch eine Funktion der Form f(x)=m*x+b beschreiben. Daher funktioniert auch das Berechnungsschema nicht.
