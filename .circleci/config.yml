@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Installing programs
-          command: 'apt-get update && apt-get install -y gcc g++ rsync timeout'
+          command: 'apt-get update && apt-get install -y gcc g++ rsync coreutils'
       - run:
           name: Compiling
           command: 'find . -name "*.cpp" -exec g++ {} -o {}.exec \;'
