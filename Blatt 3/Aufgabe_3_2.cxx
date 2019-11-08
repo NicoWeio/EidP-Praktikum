@@ -17,14 +17,10 @@ int main() {
   }
 
   if (a > c) {
-    int m = a;
-    a = c;
-    c = m;
+    swap(a, c);
   }
   if (b > c) {
-    int m = b;
-    b = c;
-    c = m;
+    swap(b, c);
   }
 
   bool isRechtwinklig = (a * a + b * b == c * c);
