@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-  unsigned int a, b, c;
+  int a, b, c;
 
   cout << "a: ";
   cin >> a;
@@ -17,12 +17,12 @@ int main() {
   }
 
   if (a > c) {
-    unsigned int m = a;
+    int m = a;
     a = c;
     c = m;
   }
   if (b > c) {
-    unsigned int m = b;
+    int m = b;
     b = c;
     c = m;
   }
