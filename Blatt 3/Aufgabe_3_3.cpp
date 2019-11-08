@@ -21,8 +21,9 @@ int main()
 	ausgeben(x, y, z, a, b, c);
 
 	// Teilaufgabe c)
-	a = &y;
-	b = &x;
+	int *m = a;
+	a = b;
+	b = m;
 
 	cout << endl << endl << "--- Ausgabe nach Teilaufgabe c) ---" << endl;
 	ausgeben(x, y, z, a, b, c);
