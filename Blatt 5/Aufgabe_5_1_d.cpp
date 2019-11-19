@@ -19,7 +19,7 @@ void gibPrimfaktorenAus(int zahl, int anzahl_primzahlen, int primzahlen[]) {
       break;
     }
 
-    if (n % p == 0) {
+    while (n % p == 0) {
       if (didOutput)
         cout << ", ";
       cout << p;

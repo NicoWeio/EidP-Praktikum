@@ -14,7 +14,7 @@ void gibPrimfaktorenAus(int zahl, bool ist_prim[]) {
     if (!ist_prim[p])
       continue;
 
-    if (n % p == 0) {
+    while (n % p == 0) {
       if (didOutput)
         cout << ", ";
       cout << p;
