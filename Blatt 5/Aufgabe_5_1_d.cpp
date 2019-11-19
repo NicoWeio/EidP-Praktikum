@@ -14,11 +14,6 @@ void gibPrimfaktorenAus(int zahl, int anzahl_primzahlen, int primzahlen[]) {
   for (int primIndex = 0; primIndex < anzahl_primzahlen; primIndex++) {
     int p = primzahlen[primIndex];
 
-    if (p == zahl) {
-      cout << "prim";
-      break;
-    }
-
     while (n % p == 0) {
       if (didOutput)
         cout << ", ";
@@ -26,6 +21,10 @@ void gibPrimfaktorenAus(int zahl, int anzahl_primzahlen, int primzahlen[]) {
       didOutput = true;
 
       n = n / p;
+    }
+
+    if ((p * p) > n) {
+      continue;
     }
   }
 
