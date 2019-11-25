@@ -11,7 +11,6 @@ using namespace std;
 int main()
 {
 	double x1, y1, x2, y2, m, b;
-	bool s;
 
 	cout << "x1: ";
 	cin >> x1;
