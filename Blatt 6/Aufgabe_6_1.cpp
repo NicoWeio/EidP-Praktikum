@@ -12,9 +12,9 @@ long long rekEidp(unsigned int n, unsigned int &count) {
 }
 
 long long itEidp(unsigned int n, unsigned int &count) {
-  int i = 2;
-  int k = 1, l = 1;
-  int m = 1; // Ausgabewert, falls n <= 2
+  unsigned int i = 2;
+  unsigned int k = 1, l = 1;
+  unsigned int m = 1; // Ausgabewert, falls n <= 2
   while (i < n) {
     m = l + 3 * k;
     count++;
