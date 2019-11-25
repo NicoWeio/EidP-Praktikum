@@ -24,7 +24,7 @@ int ack2(int n, int m) {
 }
 
 int main() {
-  int n = 0, m = 0;
+  int n, m;
   cout << "n: ";
   cin >> n;
   cout << "m: ";

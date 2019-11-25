@@ -31,7 +31,7 @@ long long moivreBinetEidP(unsigned int n) {
   return (pow((1 + sqrt(13)) / 2, n) - pow((1 - sqrt(13)) / 2, n)) / sqrt(13);
 }
 
-int main(int argc, char *argv[]) {
+int main() {
   int n = 0;
   cout << "n: ";
   cin >> n;
