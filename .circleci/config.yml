@@ -11,7 +11,7 @@ jobs:
           command: 'apt-get update && apt-get install -y gcc g++ rsync coreutils'
       - run:
           name: Compiling
-          command: 'find . -name "*.cpp" -exec g++ {} -o {}.exec \;'
+          command: 'find . -name "*.cpp" -exec g++ -Wall {} -o {}.exec \;'
       - run:
           name: Executing
           command: 'find . -name "*.exec" -exec sh -c ''echo {} && timeout 5 "{}"'' \;'
