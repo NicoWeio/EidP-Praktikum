@@ -1,4 +1,4 @@
-#include "elektrofahrzeug.cpp"
+#include "elektrofahrzeug.h"
 #include <iostream>
 using namespace std;
 

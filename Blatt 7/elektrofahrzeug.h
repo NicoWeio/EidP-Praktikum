@@ -1,3 +1,6 @@
+#ifndef ELEKTROFAHRZEUG_H
+#define ELEKTROFAHRZEUG_H
+
 class Elektrofahrzeug {
 private:
   float maxEnergie;
@@ -36,3 +39,5 @@ public:
 
   bool fahren(float strecke);
 };
+
+#endif
