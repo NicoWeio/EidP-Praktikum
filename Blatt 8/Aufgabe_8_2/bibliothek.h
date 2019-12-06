@@ -21,10 +21,11 @@ public:
 	void anmelden(std::string name);
 	void listeBuecherAuf();
 	void listeBenutzerAuf();
-	Resultat ausleihe(unsigned int inventarnummer, unsigned int benutzernummer);
-	bool rueckgabe(unsigned int inventarnummer);
-    Benutzer* findeBenutzer(unsigned int benutzernummer);
-    
+	Resultat ausleihe(unsigned int inventarnummer, unsigned int benutzernummer); // g)
+	bool rueckgabe(unsigned int inventarnummer); // f)
+	Benutzer* findeBenutzer(unsigned int benutzernummer);
+	Buch* findeBuch(unsigned int inventarnummer); // e)
+
 private:
 	Liste<Buch*> _buecher;
 	Liste<Benutzer*> _benutzer;

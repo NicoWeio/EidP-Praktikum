@@ -53,6 +53,17 @@ Benutzer* Bibliothek::findeBenutzer(unsigned int benutzernummer) {
     return nullptr;
 }
 
+// e)
+Buch* Bibliothek::findeBuch(unsigned int inventarnummer) {
+    // Liste der Buecher durchlaufen
+    for (unsigned int i = 0; i < _buecher.size(); ++i) {
+        // i-tes Buch ueberpruefen ob inventarnummer uebereinstimmt
+        if (_buecher.elementAt(i)->inventarNummer() == inventarnummer)
+            return _buecher.elementAt(i);
+    }
+    return nullptr;
+}
+
 
 void Bibliothek::anmelden(std::string name) {
     Benutzer* m = new Benutzer(name, _naechsteBenutzernummer);
@@ -62,19 +73,34 @@ void Bibliothek::anmelden(std::string name) {
 
 
 void Bibliothek::erfasse(std::string autor, std::string titel) {
-    cout << "erfasse() - Leider noch nicht implementiert" << endl;
+    // d)
+    Buch* b = new Buch(autor, titel, _naechsteInventarnummer);
+    _buecher.append(b);
+    ++_naechsteInventarnummer;
 }
 
 
 bool Bibliothek::rueckgabe(unsigned int inventarnummer) {
-    cout << "rueckgabe() - Leider noch nicht implementiert" << endl;
+    // f)
+    Buch* b = findeBuch(inventarnummer);
+    if (b == nullptr) {
+      return false;
+    }
+
+    b->rueckgabe();
     return true;
 }
 
 
 Bibliothek::Resultat Bibliothek::ausleihe(unsigned int inventarnummer,
                                           unsigned int benutzernummer) {
-    cout << "ausleihe() - Leider noch nicht implementiert" << endl;
+    // g)
+    Benutzer* benutzer = findeBenutzer(benutzernummer);
+    if (benutzer == nullptr) return BENUTZER_NICHT_VORHANDEN;
 
-    return AUSLEIHE_OK;
+    Buch* buch = findeBuch(inventarnummer);
+    if (buch == nullptr) return BUCH_NICHT_VORHANDEN;
+
+    bool result = buch->verleiheAn(benutzernummer);
+    return result ? AUSLEIHE_OK : BUCH_AUSGELIEHEN;
 }
