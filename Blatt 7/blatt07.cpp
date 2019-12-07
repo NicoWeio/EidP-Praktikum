@@ -11,7 +11,7 @@ void alleAusgeben(Elektrofahrzeug fahrzeuge[]) {
 
 int main() {
   cout << "--- START Test für Teilaufgabe d)" << endl;
-  Elektrofahrzeug fahrzeug1 = Elektrofahrzeug();
+  Elektrofahrzeug fahrzeug1;
   fahrzeug1.ausgabe();
   cout << "--- ENDE Test für Teilaufgabe d)" << endl << endl;
 

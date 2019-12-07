@@ -2,6 +2,10 @@
 #include <iostream>
 using namespace std;
 
+Elektrofahrzeug::Elektrofahrzeug()
+    : maxEnergie(80), avgVerbrauch(12.5), ladung(50), kilometerstand(30000),
+      maxGeschwindigkeit(160) {}
+
 void Elektrofahrzeug::ausgabe() {
   cout << "Maximale Energie: " << maxEnergie << " kWh" << endl;
   cout << "Durchschnittsverbrauch: " << avgVerbrauch << " kWh/100km" << endl;
@@ -55,12 +59,22 @@ void Elektrofahrzeug::setMaxEnergie(float input) {
       maxEnergie = input;
     } else {
       cerr << "Maximale Energie muss größer/gleich der Ladung sein!" << endl;
+      maxEnergie = input;
       ladung = maxEnergie;
     }
   } else {
     cerr << "Maximale Energie muss größer als 0 sein!" << endl;
     maxEnergie = 80;
   }
+}
+
+void Elektrofahrzeug::setKilometerstand(float input) {
+	if (input > 0) {
+		kilometerstand = input;
+	} else {
+		cerr << "Kilometerstand muss größer/gleich 0 sein!" << endl;
+		kilometerstand = 0;
+	}
 }
 
 Elektrofahrzeug::Elektrofahrzeug(float a, float b, float c, float d,
@@ -73,14 +87,14 @@ Elektrofahrzeug::Elektrofahrzeug(float a, float b, float c, float d,
   setLadung(c);
 
   setAvgVerbrauch(b);
-  kilometerstand = d;
+  setKilometerstand(d);
   setMaxGeschwindigkeit(e);
 }
 
 int Elektrofahrzeug::prozent() { return (ladung * 100) / maxEnergie; }
 
 float Elektrofahrzeug::aufladen() {
-  int menge = maxEnergie - ladung;
+  float menge = maxEnergie - ladung;
   ladung = maxEnergie;
   return menge;
 }

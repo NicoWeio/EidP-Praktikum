@@ -12,9 +12,7 @@ private:
   static float verbrauchFuerStrecke(float strecke, float verbrauch);
 
 public:
-  Elektrofahrzeug()
-      : maxEnergie(80), avgVerbrauch(12.5), ladung(50), kilometerstand(30000),
-        maxGeschwindigkeit(160) {}
+  Elektrofahrzeug();
   void ausgabe();
 
   float getMaxEnergie();
@@ -28,6 +26,8 @@ public:
 
   void setLadung(float input);
   void setMaxEnergie(float input);
+
+  void setKilometerstand(float input);
 
   Elektrofahrzeug(float a, float b, float c, float d, unsigned int e);
 
