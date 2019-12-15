@@ -7,6 +7,7 @@ template<typename T>
 class Liste {
     struct ListElement {
         T data;
+        ListElement *prev;
         ListElement *next;
     };
 
@@ -26,6 +27,12 @@ public:
     unsigned int size() const;
 
     T elementAt(unsigned int position) const;
+
+    void print(bool directionForward);
+
+    void reverse();
+
+    void deleteAt(unsigned int position);
 
 private:
     void clear(ListElement *obj);
@@ -62,10 +69,12 @@ void Liste<T>::append(T const &x) {
     ListElement *obj = new ListElement;
     obj->data = x;
     obj->next = nullptr;
+    obj->prev = nullptr;
     if (sz == nullptr) {
         sz = obj;
     } else {
         ez->next = obj;
+        obj->prev = ez;
     }
     ez = obj;
     ++counter;
@@ -114,5 +123,66 @@ T Liste<T>::elementAt(unsigned int position) const {
     }
     return ptr->data;
 }
+
+template<typename T>
+void Liste<T>::print(bool directionForward) {
+    ListElement *ptr = directionForward ? sz : ez;
+    while (ptr != nullptr) {
+        cout << ptr->data << " ";
+        if (directionForward) {
+            ptr = ptr->next;
+        } else {
+            ptr = ptr->prev;
+        }
+    }
+    cout << endl;
+}
+
+template<typename T>
+void Liste<T>::deleteAt(unsigned int position) {
+    ListElement *ptr = sz;
+    while (position-- > 0) {
+        if (ptr->next == nullptr) {
+            throw std::range_error("Gesuchter Index ist zu gross.");
+        }
+        ptr = ptr->next;
+    }
+
+    if (ptr->prev == nullptr) {
+        sz = ptr->next;
+    } else {
+        ptr->prev->next = ptr->next;
+    }
+
+    if (ptr->next == nullptr) {
+        ez = ptr->prev;
+    } else {
+        ptr->next->prev = ptr->prev;
+    }
+
+    delete ptr;
+    --counter;
+}
+
+template<typename T>
+void Liste<T>::reverse() {
+    ListElement *tmp = nullptr;
+    ListElement *ptr = sz;
+
+    ez = sz;
+
+    while (ptr != nullptr) {
+        tmp = ptr->prev;
+        ptr->prev = ptr->next;
+        ptr->next = tmp;
+
+        ptr = ptr->prev;
+    }
+
+    if (tmp != nullptr) {
+        sz = tmp->prev;
+    }
+}
+
 
 #endif /* EIDPLISTE_H_ */
