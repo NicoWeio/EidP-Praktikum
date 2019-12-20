@@ -7,8 +7,8 @@ template<typename T>
 class Liste {
     struct ListElement {
         T data;
-        ListElement *prev;
-        ListElement *next;
+        ListElement *prev = nullptr;
+        ListElement *next = nullptr;
     };
 
 public:
@@ -66,15 +66,11 @@ Liste<T> const &Liste<T>::operator=(Liste<T> const &other) {
 
 template<typename T>
 void Liste<T>::append(T const &x) {
-    ListElement *obj = new ListElement;
-    obj->data = x;
-    obj->next = nullptr;
-    obj->prev = nullptr;
-    if (sz == nullptr) {
+    ListElement *obj = new ListElement{x, ez, nullptr};
+    if (ez == nullptr) {
         sz = obj;
     } else {
         ez->next = obj;
-        obj->prev = ez;
     }
     ez = obj;
     ++counter;
