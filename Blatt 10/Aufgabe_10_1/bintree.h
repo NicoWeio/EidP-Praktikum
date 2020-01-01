@@ -52,34 +52,54 @@ private:
 
     // Aufgabe 1a)
     void preOrder(Node *node) {
-        // hier Code einfuegen
+        if (node == nullptr) return;
+        cout << node->data << " ";
+        preOrder(node->left);
+        preOrder(node->right);
     }
 
     // Aufgabe 1a)
     void inOrder(Node *node) {
-        // hier Code einfuegen
+        if (node == nullptr) return;
+        inOrder(node->left);
+        cout << node->data << " ";
+        inOrder(node->right);
     }
 
     // Aufgabe 1a)
     void postOrder(Node *node) {
-        // hier Code einfuegen
+        if (node == nullptr) return;
+        postOrder(node->left);
+        postOrder(node->right);
+        cout << node->data << " ";
     }
 
     // Aufgabe 1b)
     int height(Node *node) {
-        // hier Code einfuegen
-        return -1;
+        if (node == nullptr) return 0;
+        int lHeight = height(node->left);
+        int rHeight = height(node->right);
+        return ((lHeight > rHeight) ? lHeight : rHeight) + 1;
     }
 
     // Aufgabe 1c)
     int count(Node *node) {
-        // hier Code einfuegen
-        return -1;
+        if (node == nullptr) return 0;
+        return count(node->left) + count(node->right) + 1;
     }
 
     // Aufgabe 1d)
     void range(Node *node, T min, T max) {
-        // hier Code einfuegen
+        if (node == nullptr) return;
+        if (node->data > min) {
+            range(node->left, min, max);
+        }
+        if (node->data >= min && node->data <= max) {
+            cout << node->data << " ";
+        }
+        if (node->data < max) {
+            range(node->right, min, max);
+        }
     }
 
 public:
@@ -136,7 +156,38 @@ public:
 
     // Aufgabe 1e)
     void rotateLeft() {
-        // hier Code einfuegen
+        if (root == nullptr || root->left == nullptr) return;
+
+        Node *oldRoot = root;
+        root = oldRoot->left; // Die Wurzel des linken Unterbaums wird die neue Wurzel
+
+        Node *oldRight = oldRoot->left->right; // bzw. root->right
+        root->right = oldRoot; // Die alte Wurzel hängt nun rechts an der neuen Wurzel
+
+        root->right->left = oldRight;
+    }
+
+    Liste<int> listify() {
+        Liste<int> l;
+        listify(root, l);
+        return l;
+    }
+
+    void listify(Node *node, Liste<int> &l) {
+        if (node == nullptr) return;
+        l.append(node->data);
+        listify(node->left, l);
+        listify(node->right, l);
+    }
+
+    string stringify() {
+        string s;
+        Liste<int> l = listify();
+        for (int i = 0; i < l.size() - 1; i++) {
+            s += to_string(l.elementAt(i)) + ',';
+        }
+        s += to_string(l.elementAt(l.size() - 1));
+        return s;
     }
 };
 
