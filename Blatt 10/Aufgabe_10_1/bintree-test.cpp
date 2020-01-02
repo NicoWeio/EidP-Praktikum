@@ -1,65 +1,6 @@
 #include <iostream>
 #include "bintree.h"
 
-// Aufgabe 1f)
-// wir nutzen die PreOrder-Reihenfolge
-void save(BinTree<int> &tree) {
-    string s = tree.stringify();
-
-    ofstream output;
-    output.open("tree.txt");
-    output << s;
-    output.close();
-}
-
-// Aufgabe 1g)
-// entspricht nicht ganz der Aufgabenstellung, da die Datei nicht vollständig in einen String eingelesen wird
-void load(BinTree<int> &tree) {
-    ifstream input("tree.txt");
-    if (!input.is_open()) {
-        cerr << "Konnte tree.txt nicht öffnen" << endl;
-        exit(1);
-    }
-
-    char ch;
-    string s;
-    while (input >> ch) {
-        if (ch == ',') {
-            tree.insert(atoi(s.c_str()));
-            s.clear();
-        } else {
-            s += ch;
-        }
-    }
-}
-
-// Aufgabe 1g)
-// genau nach der Aufgabenstellung und ohne Bibliotheken wie sstream:
-void load2(BinTree<int> &tree) {
-    // Datei in einen String einlesen
-    ifstream input("tree.txt");
-    if (!input.is_open()) {
-        cerr << "Konnte tree.txt nicht öffnen" << endl;
-        exit(1);
-    }
-    string s;
-    while (!input.eof()) {
-        char ch;
-        input >> ch;
-        s += ch;
-    }
-    input.close();
-
-    // mittels find und substr die einzelnen Zahlen auslesen
-    size_t pos = 0;
-    string token;
-    while ((pos = s.find(',')) != string::npos) {
-        token = s.substr(0, pos);
-        tree.insert(atoi(token.c_str()));
-        s.erase(0, pos + 1);
-    }
-}
-
 int main(int argc, const char *argv[]) {
     BinTree<int> bt;
     cout << "Fuege 50, 3, 53, 21, 72, 15, 69, 111 zu binaerem Suchbaum hinzu" << endl;
